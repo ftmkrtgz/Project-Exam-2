@@ -21,6 +21,27 @@ function Product() {
   const [isCreator, setIsCreator] = useState(false);
 
   useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_ALL_VENUES}${id}?_bookings=true&_customer=true`
+        );
+        if (!response.ok) throw new Error("Failed to fetch bookings");
+        const result = await response.json();
+        const dates = result.data.bookings.map((booking) => ({
+          start: new Date(booking.dateFrom),
+          end: new Date(booking.dateTo),
+        }));
+        setBookedDates(dates);
+      } catch (error) {
+        console.error("Error fetching bookings:", error);
+      }
+    };
+
+    fetchBookings();
+  }, [id]);
+
+  useEffect(() => {
     const fetchUserAndBookings = async () => {
       const userData = JSON.parse(localStorage.getItem("userData"));
 

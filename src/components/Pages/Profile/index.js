@@ -54,11 +54,9 @@ const Profile = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch API key");
         }
-
         const apiKeyData = await response.json();
         setApiKey(apiKeyData.data.key);
         localStorage.setItem("key", JSON.stringify(apiKeyData.data));
-        console.log(localStorage.getItem("key"));
       } catch (err) {
         setError(err.message);
         setLoading(false);
@@ -173,6 +171,8 @@ const Profile = () => {
 
   const openEditVenueModal = (venue) => {
     setCurrentVenue(venue);
+    console.log(setCurrentVenue(venue));
+    console.log(venue);
     setIsNewVenueModalVisible(true);
   };
 

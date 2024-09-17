@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -15,29 +15,32 @@ const NewVenueModal = ({
 }) => {
   const isEditMode = !!initialValues;
 
-  const defaultValues = {
-    name: initialValues?.name || "",
-    description: initialValues?.description || "",
-    media: { url: initialValues?.media?.[0]?.url || "" },
-    price: initialValues?.price || 0,
-    maxGuests: initialValues?.maxGuests || 0,
-    rating: initialValues?.rating || 0,
-    meta: {
-      wifi: initialValues?.meta?.wifi || false,
-      parking: initialValues?.meta?.parking || false,
-      breakfast: initialValues?.meta?.breakfast || false,
-      pets: initialValues?.meta?.pets || false,
-    },
-    location: {
-      address: initialValues?.location?.address || "",
-      city: initialValues?.location?.city || "",
-      zip: initialValues?.location?.zip || "",
-      country: initialValues?.location?.country || "",
-      continent: initialValues?.location?.continent || "",
-      lat: initialValues?.location?.lat || 0,
-      lng: initialValues?.location?.lng || 0,
-    },
-  };
+  const defaultValues = useMemo(
+    () => ({
+      name: initialValues?.name ?? "",
+      description: initialValues?.description ?? "",
+      media: { url: initialValues?.media?.[0]?.url ?? "" },
+      price: initialValues?.price ?? 0,
+      maxGuests: initialValues?.maxGuests ?? 0,
+      rating: initialValues?.rating ?? 0,
+      meta: {
+        wifi: initialValues?.meta?.wifi ?? false,
+        parking: initialValues?.meta?.parking ?? false,
+        breakfast: initialValues?.meta?.breakfast ?? false,
+        pets: initialValues?.meta?.pets ?? false,
+      },
+      location: {
+        address: initialValues?.location?.address ?? "",
+        city: initialValues?.location?.city ?? "",
+        zip: initialValues?.location?.zip ?? "",
+        country: initialValues?.location?.country ?? "",
+        continent: initialValues?.location?.continent ?? "",
+        lat: initialValues?.location?.lat ?? 0,
+        lng: initialValues?.location?.lng ?? 0,
+      },
+    }),
+    [initialValues]
+  );
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Venue name is required"),
@@ -85,6 +88,12 @@ const NewVenueModal = ({
     defaultValues: defaultValues,
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    if (initialValues) {
+      reset(defaultValues);
+    }
+  }, [initialValues, reset, defaultValues]);
 
   const onSubmit = async (data) => {
     const formattedVenueDetails = {
