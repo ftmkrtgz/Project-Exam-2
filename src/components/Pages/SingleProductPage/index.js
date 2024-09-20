@@ -187,7 +187,7 @@ function Product() {
   };
 
   return (
-    <>
+    <main>
       <div className="card mb-3 mx-auto mt-5" style={{ maxWidth: "740px" }}>
         <div className="row g-0">
           <div className="col-md-5">
@@ -342,7 +342,7 @@ function Product() {
           <p className="text-center mt-5">There are no reviews yet. </p>
         )}
       </div>
-    </>
+    </main>
   );
 }
 

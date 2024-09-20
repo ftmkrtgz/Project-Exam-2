@@ -1,2 +1,21 @@
-// colours
 
+@import "node_modules/bootstrap/scss/functions";
+
+// colours
+$theme-colors: (
+  "primary":    #008080,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+) ;
+$nav-link-hover-color: $info;
+
+
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/bootstrap";

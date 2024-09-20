@@ -3,6 +3,8 @@ import useApi from "../../../hooks/apiFetch";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   const { Star } = useCart();
@@ -37,7 +39,7 @@ function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="btn btn-outline-success" type="submit">
+        <button className="btn btn-outline-primary" type="submit">
           Search
         </button>
       </form>
@@ -46,37 +48,50 @@ function Home() {
         {filteredProducts.map((venue) => (
           <div className="col mb-4" key={venue.id}>
             <div className="card m-auto">
-              <h3 className="card-title text-center">{venue.name}</h3>
-
               <img
                 className="card-img-top cart-img"
                 src={venue.media?.[0]?.url}
                 alt={venue.name}
               />
-
-              <div className="card-body text-center">
-                <div
+              <div>
+                <h3 className="mb-0 ms-3">{venue.name}</h3>
+                <p
+                  className="ms-3 mb-0"
                   style={{
-                    fontSize: "2rem",
-                    color: "gold",
+                    fontSize: "1.5rem",
+                    color: "#008080",
                   }}
                 >
                   {[...Array(5)].map((_, index) => (
                     <Star key={index} filled={index < venue.rating} />
                   ))}
-                </div>
-                <div className="d-flex justify-content-around mb-3">
-                  <span>{venue.price} $</span>{" "}
-                  {/* Fiyat bilgisini venue.price'den alabilirsiniz */}
-                </div>
-                <div className="d-flex  justify-content-around">
-                  <div>
-                    <Link to={`/venue/${venue.id}`}>
-                      <button className="btn  btn-primary ms-1">
-                        View Venue
-                      </button>
-                    </Link>
-                  </div>
+                  <span className="fs-5 text-black"> {venue.rating}.0</span>
+                </p>
+              </div>
+              <div className="ms-3 mb-3">
+                <FontAwesomeIcon icon={faLocationDot} />
+                {"  "}
+                <span>
+                  {venue.location.city}, {venue.location.country}
+                </span>
+              </div>
+              <div className="d-flex justify-content-between mb-3 mx-4">
+                <span className="fs-4">
+                  {venue.price} ${" "}
+                  <span className="fs-6 fw-light">/per night</span>
+                </span>
+                <span className="fs-4">
+                  {venue.maxGuests}{" "}
+                  <span className="fs-6 fw-light">guests</span>
+                </span>
+              </div>
+              <div className="d-flex  justify-content-around my-auto">
+                <div>
+                  <Link to={`/venue/${venue.id}`}>
+                    <button className="btn btn-primary ms-1 mb-4">
+                      View Venue
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

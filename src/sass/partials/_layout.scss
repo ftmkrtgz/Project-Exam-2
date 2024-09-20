@@ -26,6 +26,13 @@ ul{
 .nav-item{
     font-size: 20px;
 }
+.venue-btn{
+    background-color:#008080
+}
+
+.nav-link{
+    color:#008080
+}
 
 .logo{
     margin-left: 40px;
@@ -41,7 +48,7 @@ ul{
 
 footer{
     flex-shrink: 0;
-    background-color: $primary;
+    background-color: #008080;
     color:white;
     font-size: 13px;
     display: flex;

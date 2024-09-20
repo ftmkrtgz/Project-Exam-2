@@ -34,7 +34,7 @@ function Navbar() {
 
   return (
     <nav className="navbar bg-light-subtle ">
-      <div className="container-fluid justify-content-between">
+      <div className="container-fluid justify-content-between ">
         <div className="logo">
           <Link className="navbar-brand" to="/">
             <img className="logo-img" src="" alt="Logo" />
@@ -73,9 +73,9 @@ function Navbar() {
                     Profile
                   </Link>
                 </li>
-                <li className="nav-item bg-primary rounded">
+                <li className="nav-item">
                   <button
-                    className="nav-link text-light py-1"
+                    className="nav-item btn btn-outline-primary py-1"
                     onClick={handleLogout}
                   >
                     Logout

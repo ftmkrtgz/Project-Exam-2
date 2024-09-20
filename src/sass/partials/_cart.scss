@@ -1,6 +1,14 @@
 .card{
-    width: 85%;
+    width: 90%;
+    height: 100%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease;
 }
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
+
 .cart-img{
     height:250px;
 }

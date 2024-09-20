@@ -279,19 +279,25 @@ const Profile = () => {
                 />
                 <button
                   type="button"
-                  className="btn btn-warning rounded-5 mt-4 px-4 fs-5"
+                  className="btn btn-primary rounded-5 mt-4 px-4 fs-5"
                   onClick={openAvatarModal}
                 >
                   Update Avatar
                 </button>
               </div>
 
-              <div className="col-md-7 col-lg-7 col-sm-12 border border-black pt-5 mt-4 pb-4 rounded-5 bg-success-subtle mx-auto">
+              <div className="col-md-7 col-lg-7 col-sm-12 border border-black pt-2 mt-4 pb-4 rounded-5 bg-success-subtle mx-auto">
                 <h3 className="ms-4 fw-semibold pb-2">Personal Details</h3>
-                <div className="col-lg-11 col-sm-12 border border-black mx-auto pt-4 pb-4 rounded-3">
+                <div className="col-lg-11 col-sm-12 border border-black mx-auto pt-2 pb-2 rounded-3">
                   <p className="fw-semibold mx-3 fs-5">Name: {profile.name}</p>
                   <p className="fw-semibold mx-3 fs-5">
                     E-mail: {profile.email}
+                  </p>
+                  <p className="fw-semibold mx-3 fs-5">
+                    My Venues: {profile._count.venues}
+                  </p>
+                  <p className="fw-semibold mx-3 fs-5">
+                    My Bookings: {profile._count.bookings}
                   </p>
                 </div>
                 <div className="text-center mt-4">
@@ -308,7 +314,7 @@ const Profile = () => {
                 <div className="text-center">
                   <button
                     type="button"
-                    className="btn btn-warning rounded-5 mt-4 px-4 fs-5"
+                    className="btn btn-primary rounded-5 mt-4 px-4 fs-5"
                     onClick={handleNewVenueClick}
                   >
                     New Venue
@@ -347,6 +353,7 @@ const Profile = () => {
                     <Button
                       variant="danger"
                       onClick={() => deleteVenue(venue.id)}
+                      className="btn btn-danger"
                     >
                       Delete
                     </Button>
