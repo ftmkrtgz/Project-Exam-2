@@ -1,0 +1,51 @@
+.icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #addec8; 
+    border-radius: 5px; 
+    padding: 5px; 
+    width: 25%; 
+    height: 30px;
+    text-align: center;
+  }
+  
+  .icon-wrapper svg {
+    margin-right: 5px;
+  }
+  
+  .venue-manager {
+    display: flex;
+    align-items: center; 
+  }
+  
+  .venue-manager .avatar {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    margin-right: 10px; 
+    object-fit: cover; 
+  }
+
+  .datepicker-wrapper .datepicker-label {
+    display: block;
+  }
+  
+  .form-group .form-label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .guests-input {
+    width: 100px; 
+  }
+  
+  .map-container {
+    z-index: -1;
+  }
+  
+  .check-out{
+    z-index:3
+  }
+  
+  

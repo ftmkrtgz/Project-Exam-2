@@ -4,7 +4,6 @@ import Layout from "./components/Layout";
 import Home from "./components/Pages/HomePage";
 import Product from "./components/Pages/SingleProductPage";
 import About from "./components/Pages/About";
-import Venues from "./components/Pages/Venues";
 import Login from "./components/Pages/Login";
 import Register from "./components/Pages/Register";
 import Profile from "./components/Pages/Profile";
@@ -19,7 +18,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path="venue/:id" element={<Product />} />
           <Route path="about" element={<About />} />
-          <Route path="venues" element={<Venues />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

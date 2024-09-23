@@ -1,5 +1,5 @@
 .card{
-    width: 90%;
+    width: 85%;
     height: 100%;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.3s ease;
@@ -13,79 +13,8 @@
     height:250px;
 }
 
-.cart-percentage{
-    margin-left: 80%;
-    margin-top: 50px;          
-}
-
 .single-img{
     width: 100%;
-    height: 290px;
+    height: 400px;
 }
 
-.line{
-    width: 90%;
-    margin: auto;
-    border: 1px solid;
-    margin-top: 50px;
-}
-.buy-img{
-    width: 120px;
-    height: 120px;
-}
-
-.checkout-line{
-    width: 85%;
-    margin: auto;
-    border:1.5px solid;
-    
-}
-
-
-@media (max-width: 530px) { 
-    .checkout-price{
-        margin: 0;
-        padding: 0;
-    }
-    .dis-price,.dis-price1{
-       margin-left:-20px; 
-    }
-
- }
-
- @media (max-width: 480px) {
-    .dis-price,.dis-price1{
-        font-size: 18px;
-        margin-left: -30px;
-     }
-    
-  }
-
- @media (max-width: 360px){
-    .total-price{
-        font-size: 20px;
-    }
-    .dis-price1{
-        margin-left:-40px;
-        font-size: 16px;
-        
-    }
-    .dis-price{
-        margin-left: 2px;
-        font-size: 16px;
-    }
-    .quantity{
-        padding-right: 0;
-        padding-left: 0;
-    }
-    
- }
-
- @media (max-width: 345px){
-    
-       .dsc-price{
-        margin-right:-20px;
-        margin-left: -20px;
-       }
-    
- }

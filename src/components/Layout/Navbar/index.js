@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("userData");
@@ -32,44 +34,60 @@ function Navbar() {
     window.location.href = "/";
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="navbar bg-light-subtle ">
-      <div className="container-fluid justify-content-between ">
+      <div className="container-fluid justify-content-between">
+        <div className="hamburger" onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </div>
         <div className="logo">
           <Link className="navbar-brand" to="/">
-            <img className="logo-img" src="" alt="Logo" />
+            <img className="logo-img" src="../images/logo.png" alt="Logo" />
           </Link>
         </div>
-        <div className="left">
-          <ul className="nav ">
+
+        <div className={`menu ${isMobileMenuOpen ? "open" : ""}`}>
+          <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link
+                className="nav-link nav-navbar"
+                to="/"
+                onClick={closeMobileMenu}
+              >
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className="nav-link" to="/about" onClick={closeMobileMenu}>
                 About
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
+            <li className="nav-item left">
+              <Link
+                className="nav-link"
+                to="/contact"
+                onClick={closeMobileMenu}
+              >
                 Contact
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/venues">
-                Venues
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="right">
-          <ul className="nav">
+
             {isLoggedIn ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
+                  <Link
+                    className="nav-link"
+                    to="/profile"
+                    onClick={closeMobileMenu}
+                  >
                     Profile
                   </Link>
                 </li>
@@ -84,13 +102,21 @@ function Navbar() {
               </>
             ) : (
               <>
-                <li className="nav-item border border-primary-subtle rounded px-3 me-3">
-                  <Link className="nav-link py-1" to="/login">
+                <li className="nav-item px-2 me-2">
+                  <Link
+                    className="nav-item btn btn-outline-primary py-1"
+                    to="/login"
+                    onClick={closeMobileMenu}
+                  >
                     Login
                   </Link>
                 </li>
-                <li className="nav-item bg-primary rounded ">
-                  <Link className="nav-link text-light py-1" to="/register">
+                <li className="nav-item  ">
+                  <Link
+                    className="nav-item btn btn-outline-primary py-1 me-3"
+                    to="/register"
+                    onClick={closeMobileMenu}
+                  >
                     Register
                   </Link>
                 </li>

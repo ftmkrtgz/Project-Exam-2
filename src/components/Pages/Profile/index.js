@@ -2,8 +2,17 @@ import React, { useState, useEffect } from "react";
 import AvatarModal from "./avatar";
 import NewVenueModal from "./myvenue";
 import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faTrash,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../../../context/CartContext";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
+  const { Star } = useCart();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,6 +26,7 @@ const Profile = () => {
   const [currentVenue, setCurrentVenue] = useState(null);
   const [bookings, setBookings] = useState([]);
   const [venueManager, setVenueManager] = useState(false);
+  const [activeTab, setActiveTab] = useState("venues");
 
   useEffect(() => {
     const userData = localStorage.getItem("userData");
@@ -171,8 +181,6 @@ const Profile = () => {
 
   const openEditVenueModal = (venue) => {
     setCurrentVenue(venue);
-    console.log(setCurrentVenue(venue));
-    console.log(venue);
     setIsNewVenueModalVisible(true);
   };
 
@@ -261,7 +269,15 @@ const Profile = () => {
     return { numberOfNights, totalCost };
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "150vh", color: "#008080" }}
+      >
+        <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+      </div>
+    );
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -289,15 +305,29 @@ const Profile = () => {
               <div className="col-md-7 col-lg-7 col-sm-12 border border-black pt-2 mt-4 pb-4 rounded-5 bg-success-subtle mx-auto">
                 <h3 className="ms-4 fw-semibold pb-2">Personal Details</h3>
                 <div className="col-lg-11 col-sm-12 border border-black mx-auto pt-2 pb-2 rounded-3">
-                  <p className="fw-semibold mx-3 fs-5">Name: {profile.name}</p>
                   <p className="fw-semibold mx-3 fs-5">
-                    E-mail: {profile.email}
+                    <span className="text-primary-emphasis fw-bolder">
+                      Name:
+                    </span>{" "}
+                    {profile.name}
                   </p>
                   <p className="fw-semibold mx-3 fs-5">
-                    My Venues: {profile._count.venues}
+                    <span className="text-primary-emphasis fw-bolder">
+                      E-mail:
+                    </span>{" "}
+                    {profile.email}
                   </p>
                   <p className="fw-semibold mx-3 fs-5">
-                    My Bookings: {profile._count.bookings}
+                    <span className="text-primary-emphasis fw-bolder">
+                      My Venues:
+                    </span>{" "}
+                    {profile._count.venues}
+                  </p>
+                  <p className="fw-semibold mx-3 fs-5">
+                    <span className="text-primary-emphasis fw-bolder">
+                      My Bookings:
+                    </span>{" "}
+                    {profile._count.bookings}
                   </p>
                 </div>
                 <div className="text-center mt-4">
@@ -317,103 +347,208 @@ const Profile = () => {
                     className="btn btn-primary rounded-5 mt-4 px-4 fs-5"
                     onClick={handleNewVenueClick}
                   >
-                    New Venue
+                    Add New Venue
                   </button>
                 </div>
               </div>
             </div>
-            <div className="container">
-              <h3 className="text-center mt-5">My New Venues</h3>
-              {newVenues.length > 0 ? (
-                newVenues.map((venue, index) => (
-                  <div key={index} className="venue-details">
-                    <img
-                      className="card-img-top cart-img"
-                      src={venue.media?.[0]?.url}
-                      alt={venue.name}
-                    />
-                    <p>
-                      <strong>Name:</strong> {venue.name}
-                    </p>
-                    <p>
-                      <strong>Description:</strong> {venue.description}
-                    </p>
-                    <p>
-                      <strong>Price:</strong> ${venue.price}
-                    </p>
-                    <p>
-                      <strong>Max Guests:</strong> {venue.maxGuests}
-                    </p>
-                    <p>
-                      <strong>Rating:</strong> {venue.rating}
-                    </p>
-                    <Button onClick={() => openEditVenueModal(venue)}>
-                      Edit
-                    </Button>
-                    <Button
-                      variant="danger"
-                      onClick={() => deleteVenue(venue.id)}
-                      className="btn btn-danger"
+
+            <div className="tabs mt-5 mx-5">
+              <button
+                className={`me-4 tab-button ${
+                  activeTab === "venues" ? "active" : ""
+                }`}
+                onClick={() => setActiveTab("venues")}
+              >
+                My New Venues
+              </button>
+              <button
+                className={`tab-button ${
+                  activeTab === "bookings" ? "active" : ""
+                }`}
+                onClick={() => setActiveTab("bookings")}
+              >
+                My Bookings
+              </button>
+            </div>
+            <hr></hr>
+            {activeTab === "venues" && (
+              <div className="row venues-list mb-4">
+                <h3 className="text-center mt-5 mb-3">My New Venues</h3>
+                {newVenues.length > 0 ? (
+                  newVenues.map((venue, index) => (
+                    <div
+                      key={index}
+                      className="col-md-6 mb-4 justify-content-center d-flex"
                     >
-                      Delete
-                    </Button>
-                  </div>
-                ))
-              ) : (
-                <p>No venues created yet.</p>
-              )}
-            </div>
-            <div className="container mt-5">
-              <h3 className="text-center">My Bookings</h3>
-              {bookings.length > 0 ? (
-                bookings.map((booking, index) => {
-                  const { numberOfNights, totalCost } = calculateBookingDetails(
-                    booking.dateFrom,
-                    booking.dateTo,
-                    booking.venue.price
-                  );
+                      <div className="card h-100">
+                        <div className="row g-0">
+                          <div className="col-md-4">
+                            <Link to={`/venue/${venue.id}`}>
+                              {" "}
+                              <img
+                                className="img-fluid rounded-start h-100 w-100"
+                                src={venue.media?.[0]?.url}
+                                alt={venue.name}
+                                style={{ objectFit: "cover" }}
+                              />{" "}
+                            </Link>
+                          </div>
 
-                  return (
-                    <div key={index} className="booking-details">
-                      <img
-                        className="card-img-top cart-img"
-                        src={booking.venue.media?.[0]?.url}
-                        alt={booking.venue.name}
-                      />
-                      <p>
-                        <strong>Name:</strong> {booking.venue?.name}
-                      </p>
-                      <p>
-                        <strong>Date From:</strong>{" "}
-                        {new Date(booking.dateFrom).toLocaleDateString()}
-                      </p>
-                      <p>
-                        <strong>Date To:</strong>{" "}
-                        {new Date(booking.dateTo).toLocaleDateString()}
-                      </p>
-                      <p>
-                        <strong>Guests:</strong> {booking.guests}
-                      </p>
-                      <p>
-                        <strong>Number of Nights:</strong> {numberOfNights}
-                      </p>
-                      <p>
-                        <strong>Total Cost:</strong> ${totalCost}
-                      </p>
-
-                      <Button
-                        variant="danger"
-                        onClick={() => deleteBooking(booking.id)}
-                      >
-                        Delete
-                      </Button>
+                          <div className="col-md-8">
+                            <div className="card-body">
+                              <Link
+                                className="text-decoration-none"
+                                to={`/venue/${venue.id}`}
+                              >
+                                {" "}
+                                <h5 className="card-title text-primary-emphasis fw-bold">
+                                  {venue.name}
+                                </h5>
+                              </Link>
+                              <p
+                                className="card-text"
+                                style={{ fontSize: "1.5rem", color: "#008080" }}
+                              >
+                                {[...Array(5)].map((_, idx) => (
+                                  <Star key={idx} filled={idx < venue.rating} />
+                                ))}
+                                <span className="fs-5 text-black">
+                                  {" "}
+                                  {venue.rating}.0
+                                </span>
+                              </p>
+                              <p className="card-text">
+                                <FontAwesomeIcon icon={faLocationDot} />{" "}
+                                {venue.location.city}, {venue.location.country}
+                              </p>
+                              <div className="d-flex justify-content-start">
+                                <Button
+                                  className="me-3"
+                                  onClick={() => openEditVenueModal(venue)}
+                                >
+                                  Edit
+                                </Button>
+                                <Button
+                                  variant="danger"
+                                  onClick={() => deleteVenue(venue.id)}
+                                >
+                                  Delete
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  );
-                })
-              ) : (
-                <p>No bookings found.</p>
-              )}
-            </div>
+                  ))
+                ) : (
+                  <p>No venues created yet.</p>
+                )}
+              </div>
+            )}
+
+            {activeTab === "bookings" && (
+              <div className="row bookings-list mb-4">
+                <h3 className="text-center mt-5 mb-3">My Bookings</h3>
+                {bookings.length > 0 ? (
+                  bookings.map((booking, index) => {
+                    const { numberOfNights, totalCost } =
+                      calculateBookingDetails(
+                        booking.dateFrom,
+                        booking.dateTo,
+                        booking.venue.price
+                      );
+
+                    return (
+                      <div
+                        key={index}
+                        className="col-md-6 mb-4 justify-content-center d-flex"
+                      >
+                        <div className="card h-100" style={{ height: "300px" }}>
+                          <div className="row g-0">
+                            <div className="col-md-5">
+                              <Link to={`/venue/${booking.venue.id}`}>
+                                <img
+                                  className="img-fluid rounded-start  h-100 w-100"
+                                  src={booking.venue.media?.[0]?.url}
+                                  alt={booking.venue.name}
+                                  style={{
+                                    objectFit: "cover",
+                                    height: "100%",
+                                    minHeight: "150px",
+                                    maxHeight: "300px",
+                                  }}
+                                />
+                              </Link>
+                            </div>
+                            <div className="col-md-5 ">
+                              <div className="card-body">
+                                <Link
+                                  className="text-decoration-none"
+                                  to={`/venue/${booking.venue.id}`}
+                                >
+                                  <h5 className="card-title text-primary-emphasis fw-bold fs-3 text-center">
+                                    {booking.venue?.name}
+                                  </h5>
+                                </Link>
+                                <p className="card-text">
+                                  <strong className="text-primary-emphasis">
+                                    Date From:
+                                  </strong>{" "}
+                                  {new Date(
+                                    booking.dateFrom
+                                  ).toLocaleDateString()}
+                                </p>
+                                <p className="card-text">
+                                  <strong className="text-primary-emphasis">
+                                    Date To:
+                                  </strong>{" "}
+                                  {new Date(
+                                    booking.dateTo
+                                  ).toLocaleDateString()}
+                                </p>
+                                <p className="card-text">
+                                  <strong className="text-primary-emphasis">
+                                    Guests:
+                                  </strong>{" "}
+                                  {booking.guests}
+                                </p>
+                                <p className="card-text">
+                                  <strong className="text-primary-emphasis">
+                                    Number of Nights:
+                                  </strong>{" "}
+                                  {numberOfNights}
+                                </p>
+                                <p className="card-text">
+                                  <strong className="text-primary-emphasis">
+                                    Total Cost:
+                                  </strong>{" "}
+                                  ${totalCost}
+                                </p>
+                              </div>
+                            </div>
+                            <div
+                              className="col-md-2 d-flex justify-content-end my-auto align-items-center pe-2"
+                              style={{ height: "60px" }}
+                            >
+                              <span
+                                className="text-danger trash"
+                                onClick={() => deleteBooking(booking.id)}
+                              >
+                                <FontAwesomeIcon icon={faTrash} />
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p>No bookings found.</p>
+                )}
+              </div>
+            )}
           </div>
 
           <AvatarModal

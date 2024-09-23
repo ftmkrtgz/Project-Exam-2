@@ -94,7 +94,7 @@ const AvatarModal = ({ isVisible, onClose }) => {
               />
             </div>
             <div className="modal-footer">
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="btn btn-primary">
                 Submit
               </button>
             </div>

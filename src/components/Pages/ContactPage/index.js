@@ -41,24 +41,38 @@ function Contact() {
 
   return (
     <Form className="mt-5 mb-5 contact" onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="text-center mt-4">Contact Form</h2>
+      <h2 className="text-center text-primary-emphasis fw-bolder mt-4">
+        Contact Form
+      </h2>
       <Form.Group>
-        <Form.Label> Full Name:</Form.Label>
+        <Form.Label>
+          {" "}
+          Full Name <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="text" {...register("fullName")} />
       </Form.Group>
       <p className="text-danger">{errors.fullName?.message}</p>
       <Form.Group>
-        <Form.Label> Subject:</Form.Label>
+        <Form.Label>
+          {" "}
+          Subject <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="text" {...register("subject")} />
       </Form.Group>
       <p className="text-danger">{errors.subject?.message}</p>
       <Form.Group>
-        <Form.Label> Email:</Form.Label>
+        <Form.Label>
+          {" "}
+          Email <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="text" {...register("email")} />
       </Form.Group>
       <p className="text-danger">{errors.email?.message}</p>
       <Form.Group>
-        <Form.Label> Body:</Form.Label>
+        <Form.Label>
+          {" "}
+          Message <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control as="textarea" rows={3} {...register("body")} />
       </Form.Group>
       <p className="text-danger">{errors.body?.message}</p>

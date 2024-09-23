@@ -173,7 +173,9 @@ const NewVenueModal = ({
         )}
         <Form id="newVenueForm" onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="name">
-            <Form.Label>Venue Name</Form.Label>
+            <Form.Label>
+              Venue Name <strong className="text-danger">*</strong>
+            </Form.Label>
             <Controller
               name="name"
               control={control}
@@ -190,7 +192,9 @@ const NewVenueModal = ({
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="description">
-            <Form.Label>Description</Form.Label>
+            <Form.Label>
+              Description <strong className="text-danger">*</strong>
+            </Form.Label>
             <Controller
               name="description"
               control={control}
@@ -207,7 +211,9 @@ const NewVenueModal = ({
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="price">
-            <Form.Label>Price</Form.Label>
+            <Form.Label>
+              Price <strong className="text-danger">*</strong>
+            </Form.Label>
             <Controller
               name="price"
               control={control}
@@ -243,7 +249,9 @@ const NewVenueModal = ({
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="maxGuests">
-            <Form.Label>Max Guests</Form.Label>
+            <Form.Label>
+              Max Guests <strong className="text-danger">*</strong>
+            </Form.Label>
             <Controller
               name="maxGuests"
               control={control}

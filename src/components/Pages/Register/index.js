@@ -114,22 +114,30 @@ function Register() {
 
   return (
     <Form className="mt-5 mb-5 contact" onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="text-center mt-4">Register</h2>
+      <h2 className="text-center mt-4 text-primary-emphasis fw-bolder">
+        Register
+      </h2>
 
       <Form.Group>
-        <Form.Label> Full Name:</Form.Label>
+        <Form.Label>
+          {" "}
+          Full Name <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="text" {...register("name")} />
         {errors.name && <p className="text-danger">{errors.name.message}</p>}
       </Form.Group>
 
       <Form.Group>
-        <Form.Label> Email:</Form.Label>
+        <Form.Label className="mt-3">
+          {" "}
+          Email <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="email" {...register("email")} />
         {errors.email && <p className="text-danger">{errors.email.message}</p>}
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Avatar URL:</Form.Label>
+        <Form.Label className="mt-3">Avatar URL</Form.Label>
         <Form.Control type="url" {...register("avatar.url")} />
         {errors.avatar?.url && (
           <p className="text-danger">{errors.avatar.url.message}</p>
@@ -137,7 +145,9 @@ function Register() {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Password:</Form.Label>
+        <Form.Label className="mt-3">
+          Password <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="password" {...register("password")} />
         {errors.password && (
           <p className="text-danger">{errors.password.message}</p>
@@ -145,7 +155,9 @@ function Register() {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Confirm Password:</Form.Label>
+        <Form.Label className="mt-3">
+          Confirm Password <strong className="text-danger">*</strong>
+        </Form.Label>
         <Form.Control type="password" {...register("confirmPassword")} />
         {errors.confirmPassword && (
           <p className="text-danger">{errors.confirmPassword.message}</p>
@@ -154,6 +166,7 @@ function Register() {
 
       <Form.Group>
         <Form.Check
+          className="mt-3"
           type="checkbox"
           label="Venue Manager"
           {...register("venueManager")}
@@ -168,7 +181,10 @@ function Register() {
       </Button>
       <div className="mt-3">
         Already have an account?
-        <Link to={`/login`}> Login </Link>
+        <Link to={`/login`} className="text-primary-emphasis">
+          {" "}
+          Login{" "}
+        </Link>
       </div>
     </Form>
   );

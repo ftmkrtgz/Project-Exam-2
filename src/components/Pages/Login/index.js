@@ -63,7 +63,9 @@ function Login() {
 
   return (
     <Form className="mt-5 mb-5 contact" onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="text-center mt-4">Login</h2>
+      <h2 className="text-center mt-4 text-primary-emphasis fw-bolder">
+        Login
+      </h2>
 
       <Form.Group>
         <Form.Label> Email:</Form.Label>
@@ -77,9 +79,12 @@ function Login() {
       <p className="text-danger">{errors.password?.message}</p>
 
       <Button type="submit">Login</Button>
-      <div>
+      <div className="mt-3">
         Don't have an account?
-        <Link to={`/register`}> Create an account </Link>
+        <Link to={`/register`} className="text-primary-emphasis">
+          {" "}
+          Create an account{" "}
+        </Link>
       </div>
     </Form>
   );

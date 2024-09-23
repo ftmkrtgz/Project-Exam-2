@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLocationDot,
+  faUserGroup,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   const { Star } = useCart();
@@ -14,7 +18,14 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh", color: "#008080" }}
+      >
+        <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+      </div>
+    );
   }
 
   if (isError) {
@@ -43,7 +54,9 @@ function Home() {
           Search
         </button>
       </form>
-      <h1 className="text-center mt-3 mb-4">Venues</h1>
+      <h1 className="text-center text-primary-emphasis fw-bolder mt-3 mb-4">
+        Venues
+      </h1>
       <div className="row row-cols-1 row-cols-md-3 row-cols-sm-2 pb-4  ">
         {filteredProducts.map((venue) => (
           <div className="col mb-4" key={venue.id}>
@@ -54,7 +67,9 @@ function Home() {
                 alt={venue.name}
               />
               <div>
-                <h3 className="mb-0 ms-3">{venue.name}</h3>
+                <h3 className="mb-0 ms-3 text-primary-emphasis">
+                  {venue.name}
+                </h3>
                 <p
                   className="ms-3 mb-0"
                   style={{
@@ -69,19 +84,27 @@ function Home() {
                 </p>
               </div>
               <div className="ms-3 mb-3">
-                <FontAwesomeIcon icon={faLocationDot} />
+                <span className="text-primary-emphasis">
+                  {" "}
+                  <FontAwesomeIcon icon={faLocationDot} />
+                </span>
                 {"  "}
                 <span>
                   {venue.location.city}, {venue.location.country}
                 </span>
               </div>
               <div className="d-flex justify-content-between mb-3 mx-4">
-                <span className="fs-4">
-                  {venue.price} ${" "}
+                <span>
+                  <span className="fs-4  fw-semibold">{venue.price} $ </span>
                   <span className="fs-6 fw-light">/per night</span>
                 </span>
-                <span className="fs-4">
-                  {venue.maxGuests}{" "}
+
+                <span>
+                  <span className="fs-5 text-primary-emphasis">
+                    {" "}
+                    <FontAwesomeIcon icon={faUserGroup} />{" "}
+                  </span>
+                  <span className="fs-4">{venue.maxGuests} </span>
                   <span className="fs-6 fw-light">guests</span>
                 </span>
               </div>
