@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -41,8 +42,8 @@ const About = () => {
         <h2 className="text-primary-emphasis fw-semibold">Contact Us</h2>
         <p>
           If you have any questions or need assistance, feel free to{" "}
-          <a href="/contact">contact our team</a>. We’re here to help you every
-          step of the way!
+          <Link to="/contact">contact our team</Link>. We’re here to help you
+          every step of the way!
         </p>
       </div>
     </section>
