@@ -2,7 +2,7 @@
 
 ## Holidaze
 
-![Holidaze](/images/screen-shout.png)
+![Holidaze](./public/images/screen-shout.png)
 
 This is a project exam 2 for Front-end Development at Noroff.
 
@@ -85,9 +85,9 @@ If you want to contribute to a project and make it better, your help is very wel
 
 | Resource         | url                                                                                                                                                                                                                                                                                                                                                                                                |
 | :--------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Gantt Chart      | [Gantt Chart Link](https://github.com/users/ftmkrtgz/projects/1/views/4)                                                                                                                                                                                                                                                                                                                           |
+| Gantt Chart      | [Gantt Chart Link](https://github.com/users/ftmkrtgz/projects/2/views/4)                                                                                                                                                                                                                                                                                                                           |
 | Design Prototype | [Dekstop](https://www.figma.com/proto/NZtaL03EWZi6CcLL8zM5kl/Project-exam-2-dekstop?node-id=21-525&node-type=frame&t=qXxSZyqknaS0YvNz-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=21%3A525), [Mobile](https://www.figma.com/proto/NZtaL03EWZi6CcLL8zM5kl/Project-exam-2-dekstop?node-id=29-79&node-type=frame&t=qXxSZyqknaS0YvNz-0&scaling=contain&content-scaling=fixed&page-id=25%3A61) |
 | Style Guide      | [Style Guide Link](https://www.figma.com/proto/NZtaL03EWZi6CcLL8zM5kl/Project-exam-2-dekstop?node-id=34-748&node-type=canvas&t=qXxSZyqknaS0YvNz-0&scaling=min-zoom&content-scaling=fixed&page-id=30%3A747)                                                                                                                                                                                                   |
-| Kanban Board     | [Kanban Board Link](https://trello.com/invite/b/DbV5Bs33/ATTI44510e5c9996cba6b93e67381acc99fa15EC7462/semester-project-2)                                                                                                                                                                                                                                                                          |
+| Kanban Board     | [Kanban Board Link](https://trello.com/invite/b/66f3e5ec3028d2d5a42e662d/ATTIba4e15435f3a72805fb1ab38d38c570eBDFC0A22/project-exam-2)                                                                                                                                                                                                                                                                          |
 | Repository       | [Github Link](https://github.com/ftmkrtgz/project-exam-2/tree/master)                                                                                                                                                                                                                                                                                                                                      |
 | Hosted Demo      | [Netlify](https://summerholidaze.netlify.app/)                
