@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Project-Exam-2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Holidaze
 
-## Available Scripts
+![Holidaze](/images/screen-shout.png)
 
-In the project directory, you can run:
+This is a project exam 2 for Front-end Development at Noroff.
 
-### `npm start`
+## Brief
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A newly launched accommodation booking site called Holidaze has approached you to develop a brand new front end for their application. While they have a list of required features, the design and user experience has not been specified. Working with the official API documentation, plan, design and build a modern front end accommodation booking application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+There are two aspects to this brief: the customer-facing side of the website where users can book holidays at a venue, and an admin-facing side of the website where users can register and manage venues and bookings at those venues.
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+All API functionality is managed by an existing application. This project only covers the front-end application for the API.
 
-### `npm run build`
+## User stories
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The client has specified the following requirements in the form of User Stories:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. A user may view a list of Venues
+2. A user may search for a specific Venue
+3. A user may view a specific Venue page by id
+4. A user may view a calendar with available dates for a Venue
+5. A user with a stud.noroff.no email may register as a customer
+6. A registered customer may create a booking at a Venue
+7. A registered customer may view their upcoming bookings
+8. A user with a stud.noroff.no email may register as a Venue manager
+9. A registered Venue manager may create a Venue
+10. A registered Venue manager may update a Venue they manage
+11. A registered Venue manager may delete a Venue they manage
+12. A registered Venue manager may view bookings for a Venue they manage
+13. A registered user may login
+14. A registered user may update their avatar
+15. A registered user may logout
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Built With
 
-### `npm run eject`
+- HTML
+- CSS
+- SASS
+- [Bootstrap](https://getbootstrap.com)
+- React
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repo:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git https://github.com/ftmkrtgz/project-exam-2.git
+```
 
-## Learn More
+2. Install the dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Running
 
-### Code Splitting
+1. To run the app, run the following commands:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm run start
+```
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+If you want to contribute to a project and make it better, your help is very welcome.
 
-### Making a Progressive Web App
+1. Make your changes and commit them:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ```bash
+    git add .
+    git commit -m "Description of your changes"
+    ```
 
-### Advanced Configuration
+2. Push to your branch and open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Links
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Resource         | url                                                                                                                                                                                                                                                                                                                                                                                                |
+| :--------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gantt Chart      | [Gantt Chart Link](https://github.com/users/ftmkrtgz/projects/1/views/4)                                                                                                                                                                                                                                                                                                                           |
+| Design Prototype | [Dekstop](https://www.figma.com/proto/NZtaL03EWZi6CcLL8zM5kl/Project-exam-2-dekstop?node-id=21-525&node-type=frame&t=qXxSZyqknaS0YvNz-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=21%3A525), [Mobile](https://www.figma.com/proto/NZtaL03EWZi6CcLL8zM5kl/Project-exam-2-dekstop?node-id=29-79&node-type=frame&t=qXxSZyqknaS0YvNz-0&scaling=contain&content-scaling=fixed&page-id=25%3A61) |
+| Style Guide      | [Style Guide Link](https://www.figma.com/proto/NZtaL03EWZi6CcLL8zM5kl/Project-exam-2-dekstop?node-id=34-748&node-type=canvas&t=qXxSZyqknaS0YvNz-0&scaling=min-zoom&content-scaling=fixed&page-id=30%3A747)                                                                                                                                                                                                   |
+| Kanban Board     | [Kanban Board Link](https://trello.com/invite/b/DbV5Bs33/ATTI44510e5c9996cba6b93e67381acc99fa15EC7462/semester-project-2)                                                                                                                                                                                                                                                                          |
+| Repository       | [Github Link](https://github.com/ftmkrtgz/project-exam-2/tree/master)                                                                                                                                                                                                                                                                                                                                      |
+| Hosted Demo      | [Netlify](https://summerholidaze.netlify.app/)                
