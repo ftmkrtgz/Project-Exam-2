@@ -22,7 +22,7 @@ const schema = yup
     body: yup
       .string()
       .required("Please enter body")
-      .min(20, "Body should be at least 3 characters."),
+      .min(20, "Body should be at least 20 characters."),
   })
   .required();
 
