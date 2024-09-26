@@ -3,7 +3,7 @@ body{
    height: 100%;
    margin: 0;
    background-color: $light;
-   
+   overflow-x: hidden;
 }
 
 ul{
@@ -21,6 +21,14 @@ ul{
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    background-color: #fff; 
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .nav-item{
