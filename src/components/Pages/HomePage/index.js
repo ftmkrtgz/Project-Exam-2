@@ -16,6 +16,7 @@ function Home() {
     process.env.REACT_APP_API_ALL_VENUES
   );
   const [searchTerm, setSearchTerm] = useState("");
+  const [visibleCount, setVisibleCount] = useState(12);
 
   if (isLoading) {
     return (
@@ -35,6 +36,13 @@ function Home() {
   const filteredProducts = data.filter((venue) =>
     venue.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 6); // Increase the count by 6 each time
+  };
+
   return (
     <main>
       <form
@@ -58,7 +66,7 @@ function Home() {
         Venues
       </h1>
       <div className="row row-cols-1 row-cols-md-3 row-cols-sm-2 pb-4  ">
-        {filteredProducts.map((venue) => (
+        {visibleProducts.map((venue) => (
           <div className="col mb-4" key={venue.id}>
             <div className="card m-auto">
               <img
@@ -121,6 +129,13 @@ function Home() {
           </div>
         ))}
       </div>
+      {visibleCount < filteredProducts.length && (
+        <div className="d-flex justify-content-center mb-4">
+          <button className="btn btn-outline-primary" onClick={handleLoadMore}>
+            Load More
+          </button>
+        </div>
+      )}
     </main>
   );
 }

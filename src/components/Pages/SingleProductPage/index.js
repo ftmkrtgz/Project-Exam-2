@@ -31,6 +31,7 @@ function Product() {
   const [bookedDates, setBookedDates] = useState([]);
   const [bookingSuccess, setBookingSuccess] = useState(null);
   const [isCreator, setIsCreator] = useState(false);
+  const [guestsError, setGuestsError] = useState(null);
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -149,6 +150,11 @@ function Product() {
       return;
     }
 
+    if (guests > data.maxGuests) {
+      setGuestsError(`You can only book for up to ${data.maxGuests} guests.`);
+      return;
+    }
+
     if (!dateFrom || !dateTo) {
       alert("Please fill in all booking details.");
       return;
@@ -205,6 +211,17 @@ function Product() {
     }
   };
 
+  const handleGuestChange = (e) => {
+    const guestCount = e.target.value;
+    setGuests(guestCount);
+
+    if (guestCount > data.maxGuests) {
+      setGuestsError(`You can only book for up to ${data.maxGuests} guests.`);
+    } else {
+      setGuestsError(null);
+    }
+  };
+
   return (
     <main>
       <div className="card mb-3 mx-auto mt-1">
@@ -223,7 +240,7 @@ function Product() {
           </Carousel>
         )}
         <div className="row">
-          <div className="col-md-6 ms-4">
+          <div className="col-md-6 ps-4">
             <h3 className="ms-3 text-primary-emphasis fw-bold">{data.name}</h3>
             <div>
               <p
@@ -387,17 +404,22 @@ function Product() {
                     <input
                       type="number"
                       value={guests}
-                      onChange={(e) => setGuests(e.target.value)}
+                      onChange={handleGuestChange}
                       min="1"
                       max={data.maxGuests}
                       className="form-control guests-input"
                       id="guests"
                     />
+                    {guestsError && (
+                      <div className="alert alert-danger mt-2">
+                        {guestsError}
+                      </div>
+                    )}
                   </div>
 
                   <button
                     onClick={handleBooking}
-                    className="btn btn-primary w-50"
+                    className="btn btn-primary w-55"
                     disabled={isBooking}
                   >
                     {isBooking ? "Booking..." : "Create Booking"}
