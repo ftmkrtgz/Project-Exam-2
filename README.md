@@ -51,7 +51,7 @@ The client has specified the following requirements in the form of User Stories:
 1. Clone the repo:
 
 ```bash
-git https://github.com/ftmkrtgz/project-exam-2.git
+git clone https://github.com/ftmkrtgz/project-exam-2.git
 ```
 
 2. Install the dependencies
@@ -91,3 +91,9 @@ If you want to contribute to a project and make it better, your help is very wel
 | Kanban Board     | [Kanban Board Link](https://trello.com/invite/b/66f3e5ec3028d2d5a42e662d/ATTIba4e15435f3a72805fb1ab38d38c570eBDFC0A22/project-exam-2)                                                                                                                                                                                                                                                                          |
 | Repository       | [Github Link](https://github.com/ftmkrtgz/project-exam-2/tree/master)                                                                                                                                                                                                                                                                                                                                      |
 | Hosted Demo      | [Netlify](https://summerholidaze.netlify.app/)           |
+
+## Contact
+
+[My Portfolio Page](https://fatma-krtgz.netlify.app/)
+
+[My LinkedIn page](https://www.linkedin.com/in/fatma-kurtgözü-5693aa288)
